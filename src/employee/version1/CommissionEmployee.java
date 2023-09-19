@@ -99,6 +99,9 @@ public class CommissionEmployee {
         return "Employee ID: " + empID + "\n" +
                "Employee Name: " + empName + "\n" +
                "Date Hired: " + empDateHired + "\n" +
-               "Date of Birth: " + empBirthDate;
+               "Date of Birth: " + empBirthDate + "\n" +
+               "Total Sales: $" + totalSales + "\n" +
+               "Salary: $" + computeSalary();
+                
     }
 }
