@@ -9,7 +9,7 @@ public class HourlyEmployee extends Employee {
     }
 
     public HourlyEmployee(int empID, String empName, String empDateHired, String empBirthDate) {
-        super();
+        super(empID, empName,empDateHired, empBirthDate);
     }
     
     public HourlyEmployee(float totalHoursWorked, float ratePerHour) {
@@ -19,7 +19,7 @@ public class HourlyEmployee extends Employee {
     }
     
     public HourlyEmployee(int empID, String empName, String empDateHired, String empBirthDate, float totalHoursWorked, float ratePerHour) {
-        super();
+        super(empID, empName,empDateHired, empBirthDate);
         this.totalHoursWorked = totalHoursWorked;
         this.ratePerHour = ratePerHour;
     }

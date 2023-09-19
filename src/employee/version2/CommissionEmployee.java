@@ -8,7 +8,7 @@ public class CommissionEmployee extends Employee {
     }
 
     public CommissionEmployee(int empID, String empName, String empDateHired, String empBirthDate) {
-        super();
+        super(empID, empName,empDateHired, empBirthDate);
     }
     
     public CommissionEmployee(double totalSales) {
@@ -17,7 +17,7 @@ public class CommissionEmployee extends Employee {
     }
 
     public CommissionEmployee(int empID, String empName, String empDateHired, String empBirthDate, double totalSales) {
-        super();
+        super(empID, empName,empDateHired, empBirthDate);
         this.totalSales = totalSales;
     }
 

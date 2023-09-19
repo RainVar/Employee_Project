@@ -9,7 +9,7 @@ public class PieceWorkerEmployee extends Employee {
     }
 
     public PieceWorkerEmployee(int empID, String empName, String empDateHired, String empBirthDate) {
-        super();
+        super(empID, empName,empDateHired, empBirthDate);
     }
     
     public PieceWorkerEmployee(float totalPiecesFinished, float ratePerPiece) {
@@ -19,7 +19,7 @@ public class PieceWorkerEmployee extends Employee {
     }
     
     public PieceWorkerEmployee(int empID, String empName, String empDateHired, String empBirthDate, float totalPiecesFinished, float ratePerPiece) {
-        super();
+        super(empID, empName,empDateHired, empBirthDate);
         this.totalPiecesFinished = totalPiecesFinished;
         this.ratePerPiece = ratePerPiece;
     }

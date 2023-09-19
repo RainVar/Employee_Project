@@ -8,16 +8,16 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
     }
 
     public BasePlusCommissionEmployee(int empID, String empName, String empDateHired, String empBirthDate) {
-        super();
+        super(empID, empName,empDateHired, empBirthDate);
     }
     
     public BasePlusCommissionEmployee(double totalSales, double baseSalary) {
-        super();
+        super(totalSales);
         this.baseSalary = baseSalary;
     }
 
     public BasePlusCommissionEmployee(int empID, String empName, String empDateHired, String empBirthDate, double totalSales, double baseSalary) {
-        super();
+        super(empID, empName,empDateHired, empBirthDate, totalSales);
         this.baseSalary = baseSalary;
     }
 
@@ -46,14 +46,11 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
     public void displayInfo() {
         super.displayInfo();
         System.out.println("Base Salary: $" + baseSalary);
-        System.out.println("Salary: $" + computeSalary());
     }
 
     @Override
     public String toString() {
         return super.toString() +
-               "Base Salary: $" + baseSalary + "\n" +
-               "Salary: $" + computeSalary();
-                
+               "Base Salary: $" + baseSalary + "\n";
     }
 }
