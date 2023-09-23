@@ -14,24 +14,24 @@ public class BasePlusCommissionEmployee {
 
     }
 
-    public BasePlusCommissionEmployee(int empID, String empName, String empDateHired, String empBirthDate) {
+    public BasePlusCommissionEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
         this.empID = empID;
         this.empName = empName;
-        this.empDateHired = LocalDate.parse(empDateHired);
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+        this.empDateHired = empDateHired;
+        this.empBirthDate = empBirthDate;
     }
-    
+
     public BasePlusCommissionEmployee(double totalSales, double baseSalary) {
-        this(0, "PlaceHolder", "1000-10-10", "1000-10-10");
+        this(0, "PlaceHolder", LocalDate.of(1000, 10, 10), LocalDate.of(1000, 10, 10));
         this.totalSales = totalSales;
         this.baseSalary = baseSalary;
     }
 
-    public BasePlusCommissionEmployee(int empID, String empName, String empDateHired, String empBirthDate, double totalSales, double baseSalary) {
+    public BasePlusCommissionEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate, double totalSales, double baseSalary) {
         this.empID = empID;
         this.empName = empName;
-        this.empDateHired = LocalDate.parse(empDateHired);
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+        this.empDateHired = empDateHired;
+        this.empBirthDate = empBirthDate;
         this.totalSales = totalSales;
         this.baseSalary = baseSalary;
     }
@@ -56,16 +56,16 @@ public class BasePlusCommissionEmployee {
         return empDateHired;
     }
 
-    public void setEmpDateHired(String empDateHired) {
-        this.empDateHired = LocalDate.parse(empDateHired);
+    public void setEmpDateHired(LocalDate empDateHired) {
+        this.empDateHired = empDateHired;
     }
 
     public LocalDate getEmpBirthDate() {
         return empBirthDate;
     }
 
-    public void setEmpBirthDate(String empBirthDate) {
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+    public void setEmpBirthDate(LocalDate empBirthDate) {
+        this.empBirthDate = empBirthDate;
     }
 
     public double getTotalSales() {

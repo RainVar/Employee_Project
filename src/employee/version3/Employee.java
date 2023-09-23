@@ -1,18 +1,27 @@
-package employee.version2;
+package employee.version3;
 
 import java.time.LocalDate;
 
 public class Employee {
     private int empID;
-    private String empName;
+    private Name empName;
     private LocalDate empDateHired;
     private LocalDate empBirthDate;
 
     public Employee() {
-        this(0, "PlaceHolder", LocalDate.of(1000, 10, 10), LocalDate.of(1000, 10, 10));
+        Name PlaceHolder = new Name()
+            .title("Mr.")
+            .firstName("Place")
+            .middleName("Hole")
+            .lastName("Der")
+            .suffix("I");
+        this.empID = 0;
+        this.empName = PlaceHolder;
+        this.empDateHired = LocalDate.of(1000, 10, 10);
+        this.empDateHired = LocalDate.of(1000, 10, 10);
     }
 
-    public Employee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
+    public Employee(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate) {
         this.empID = empID;
         this.empName = empName;
         this.empDateHired = empDateHired;
@@ -27,11 +36,11 @@ public class Employee {
         this.empID = empID;
     }
 
-    public String getEmpName() {
+    public Name getEmpName() {
         return empName;
     }
 
-    public void setEmpName(String empName) {
+    public void setEmpName(Name empName) {
         this.empName = empName;
     }
 

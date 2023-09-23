@@ -11,27 +11,27 @@ public class PieceWorkerEmployee {
     private float ratePerPiece;
 
     public PieceWorkerEmployee() {
-        
+
     }
 
-    public PieceWorkerEmployee(int empID, String empName, String empDateHired, String empBirthDate) {
+    public PieceWorkerEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
         this.empID = empID;
         this.empName = empName;
-        this.empDateHired = LocalDate.parse(empDateHired);
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+        this.empDateHired = empDateHired;
+        this.empBirthDate = empBirthDate;
     }
-    
+
     public PieceWorkerEmployee(float totalPiecesFinished, float ratePerPiece) {
-        this(0, "PlaceHolder", "1000-10-10", "1000-10-10");
+        this(0, "PlaceHolder", LocalDate.of(1000, 10, 10), LocalDate.of(1000, 10, 10));
         this.totalPiecesFinished = totalPiecesFinished;
         this.ratePerPiece = ratePerPiece;
     }
-    
-    public PieceWorkerEmployee(int empID, String empName, String empDateHired, String empBirthDate, float totalPiecesFinished, float ratePerPiece) {
+
+    public PieceWorkerEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate, float totalPiecesFinished, float ratePerPiece) {
         this.empID = empID;
         this.empName = empName;
-        this.empDateHired = LocalDate.parse(empDateHired);
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+        this.empDateHired = empDateHired;
+        this.empBirthDate = empBirthDate;
         this.totalPiecesFinished = totalPiecesFinished;
         this.ratePerPiece = ratePerPiece;
     }
@@ -56,16 +56,16 @@ public class PieceWorkerEmployee {
         return empDateHired;
     }
 
-    public void setEmpDateHired(String empDateHired) {
-        this.empDateHired = LocalDate.parse(empDateHired);
+    public void setEmpDateHired(LocalDate empDateHired) {
+        this.empDateHired = empDateHired;
     }
 
     public LocalDate getEmpBirthDate() {
         return empBirthDate;
     }
 
-    public void setEmpBirthDate(String empBirthDate) {
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+    public void setEmpBirthDate(LocalDate empBirthDate) {
+        this.empBirthDate = empBirthDate;
     }
 
     public float getTotalPiecesFinished() {
@@ -101,11 +101,11 @@ public class PieceWorkerEmployee {
     @Override
     public String toString() {
         return "Employee ID: " + empID + "\n" +
-            "Employee Name: " + empName + "\n" +
-            "Date Hired: " + empDateHired + "\n" +
-            "Date of Birth: " + empBirthDate + "\n" +
-            "Total Pieces Finished: " + totalPiecesFinished + "\n" +
-            "Rate Per Piece: " + ratePerPiece + "\n" +
-            "Weekly Salary: $" + computeSalary();
+                "Employee Name: " + empName + "\n" +
+                "Date Hired: " + empDateHired + "\n" +
+                "Date of Birth: " + empBirthDate + "\n" +
+                "Total Pieces Finished: " + totalPiecesFinished + "\n" +
+                "Rate Per Piece: " + ratePerPiece + "\n" +
+                "Weekly Salary: $" + computeSalary();
     }
 }

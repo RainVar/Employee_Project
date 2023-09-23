@@ -1,13 +1,22 @@
-package employee.version1;
+package employee.version2;
+
+import java.time.LocalDate;
 
 public class TestMain {
      public static void main(String[] args) {
-         
-        //using Version 1
-        System.out.println("VERSION 1: \n");
-        
+    
+        //using Version 2
+        System.out.println("VERSION 2: \n");
+       
         System.out.println("Hourly Employee:");
-        HourlyEmployee emp1 = new HourlyEmployee(45f, 12.5f);
+        HourlyEmployee emp1 = new HourlyEmployee(
+                12, 
+                "Peter", 
+                LocalDate.of(2003, 06, 29), 
+                LocalDate.of(2003, 06, 29), 
+                52f, 
+                15.3f
+        );
         emp1.displayInfo();
         
         System.out.println();
@@ -27,5 +36,7 @@ public class TestMain {
         System.out.println("Base Plus Commission Employee:");
         BasePlusCommissionEmployee emp4 = new BasePlusCommissionEmployee(75000, 5000);
         emp4.displayInfo();
+        
+      
     }
 }

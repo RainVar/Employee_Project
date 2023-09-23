@@ -1,4 +1,4 @@
-package employee.version2;
+package employee.version3;
 
 import java.time.LocalDate;
 
@@ -10,7 +10,7 @@ public class HourlyEmployee extends Employee {
         
     }
 
-    public HourlyEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
+    public HourlyEmployee(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate) {
         super(empID, empName, empDateHired, empBirthDate);
     }
     
@@ -20,7 +20,7 @@ public class HourlyEmployee extends Employee {
         this.ratePerHour = ratePerHour;
     }
     
-    public HourlyEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate, float totalHoursWorked, float ratePerHour) {
+    public HourlyEmployee(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate, float totalHoursWorked, float ratePerHour) {
         super(empID, empName, empDateHired, empBirthDate);
         this.totalHoursWorked = totalHoursWorked;
         this.ratePerHour = ratePerHour;

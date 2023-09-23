@@ -1,4 +1,4 @@
-package employee.version2;
+package employee.version3;
 
 import java.time.LocalDate;
 
@@ -9,7 +9,7 @@ public class CommissionEmployee extends Employee {
 
     }
 
-    public CommissionEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
+    public CommissionEmployee(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate) {
         super(empID, empName, empDateHired, empBirthDate);
     }
 
@@ -18,7 +18,7 @@ public class CommissionEmployee extends Employee {
         this.totalSales = totalSales;
     }
 
-    public CommissionEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate, double totalSales) {
+    public CommissionEmployee(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate, double totalSales) {
         super(empID, empName, empDateHired, empBirthDate);
         this.totalSales = totalSales;
     }

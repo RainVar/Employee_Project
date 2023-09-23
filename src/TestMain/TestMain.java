@@ -1,13 +1,30 @@
-package employee.version1;
+package TestMain;
+
+import java.time.LocalDate;
+import employee.version3.*;
 
 public class TestMain {
      public static void main(String[] args) {
-         
-        //using Version 1
-        System.out.println("VERSION 1: \n");
+    
+        //using Version 3
+        System.out.println("VERSION 3: \n");
+        
+        Name name1 = new Name()
+                .title("Dr.")
+                .firstName("Karen")
+                .lastName("Lei")
+                .middleName("Torrevillas")
+                .suffix("II");
         
         System.out.println("Hourly Employee:");
-        HourlyEmployee emp1 = new HourlyEmployee(45f, 12.5f);
+        HourlyEmployee emp1 = new HourlyEmployee(
+                12, 
+                name1, 
+                LocalDate.of(2003, 06, 29), 
+                LocalDate.of(2003, 06, 29), 
+                52f, 
+                15.3f
+        );
         emp1.displayInfo();
         
         System.out.println();
@@ -27,5 +44,5 @@ public class TestMain {
         System.out.println("Base Plus Commission Employee:");
         BasePlusCommissionEmployee emp4 = new BasePlusCommissionEmployee(75000, 5000);
         emp4.displayInfo();
-    }
+     }
 }

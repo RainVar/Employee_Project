@@ -11,27 +11,27 @@ public class HourlyEmployee {
     private float ratePerHour;
 
     public HourlyEmployee() {
-        
+
     }
 
-    public HourlyEmployee(int empID, String empName, String empDateHired, String empBirthDate) {
+    public HourlyEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
         this.empID = empID;
         this.empName = empName;
-        this.empDateHired = LocalDate.parse(empDateHired);
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+        this.empDateHired = empDateHired;
+        this.empBirthDate = empBirthDate;
     }
-    
+
     public HourlyEmployee(float totalHoursWorked, float ratePerHour) {
-        this(0, "PlaceHolder", "1000-10-10", "1000-10-10");
+        this(0, "PlaceHolder", LocalDate.of(1000, 10, 10), LocalDate.of(1000, 10, 10));
         this.totalHoursWorked = totalHoursWorked;
         this.ratePerHour = ratePerHour;
     }
-    
-    public HourlyEmployee(int empID, String empName, String empDateHired, String empBirthDate, float totalHoursWorked, float ratePerHour) {
+
+    public HourlyEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate, float totalHoursWorked, float ratePerHour) {
         this.empID = empID;
         this.empName = empName;
-        this.empDateHired = LocalDate.parse(empDateHired);
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+        this.empDateHired = empDateHired;
+        this.empBirthDate = empBirthDate;
         this.totalHoursWorked = totalHoursWorked;
         this.ratePerHour = ratePerHour;
     }
@@ -56,16 +56,16 @@ public class HourlyEmployee {
         return empDateHired;
     }
 
-    public void setEmpDateHired(String empDateHired) {
-        this.empDateHired = LocalDate.parse(empDateHired);
+    public void setEmpDateHired(LocalDate empDateHired) {
+        this.empDateHired = empDateHired;
     }
 
     public LocalDate getEmpBirthDate() {
         return empBirthDate;
     }
 
-    public void setEmpBirthDate(String empBirthDate) {
-        this.empBirthDate = LocalDate.parse(empBirthDate);
+    public void setEmpBirthDate(LocalDate empBirthDate) {
+        this.empBirthDate = empBirthDate;
     }
 
     public float getTotalHoursWorked() {
@@ -85,8 +85,8 @@ public class HourlyEmployee {
     }
 
     public double computeSalary() {
-        if (totalHoursWorked > 40){
-            return totalHoursWorked * ratePerHour + ((ratePerHour * 1.5) * (totalHoursWorked-40));
+        if (totalHoursWorked > 40) {
+            return totalHoursWorked * ratePerHour + ((ratePerHour * 1.5) * (totalHoursWorked - 40));
         } else {
             return totalHoursWorked * ratePerHour;
         }
@@ -105,11 +105,11 @@ public class HourlyEmployee {
     @Override
     public String toString() {
         return "Employee ID: " + empID + "\n" +
-            "Employee Name: " + empName + "\n" +
-            "Date Hired: " + empDateHired + "\n" +
-            "Date of Birth: " + empBirthDate + "\n" +
-            "Total Hours Worked: " + totalHoursWorked + "\n" +
-            "Rate Per Hour: " + ratePerHour + "\n" +
-            "Weekly Salary: $" + computeSalary();
+                "Employee Name: " + empName + "\n" +
+                "Date Hired: " + empDateHired + "\n" +
+                "Date of Birth: " + empBirthDate + "\n" +
+                "Total Hours Worked: " + totalHoursWorked + "\n" +
+                "Rate Per Hour: " + ratePerHour + "\n" +
+                "Weekly Salary: $" + computeSalary();
     }
 }
