@@ -1,13 +1,16 @@
 package TestMain;
 
+import employee.version4.*;
 import java.time.LocalDate;
-import employee.version3.*;
 
 public class TestMain {
      public static void main(String[] args) {
     
         //using Version 3
-        System.out.println("VERSION 3: \n");
+        System.out.println("VERSION 4: \n");
+        
+        EmployeeRoster roster = new EmployeeRoster();
+        EmployeeRoster search = new EmployeeRoster();
         
         Name name1 = new Name()
                 .title("Dr.")
@@ -16,7 +19,8 @@ public class TestMain {
                 .middleName("Torrevillas")
                 .suffix("II");
         
-        System.out.println("Hourly Employee:");
+        
+        //Creating Employees
         HourlyEmployee emp1 = new HourlyEmployee(
                 12, 
                 name1, 
@@ -25,24 +29,21 @@ public class TestMain {
                 52f, 
                 15.3f
         );
-        emp1.displayInfo();
-        
-        System.out.println();
-        
-        System.out.println("PieceWorker Employee:");
+      
         PieceWorkerEmployee emp2 = new PieceWorkerEmployee(45f, 12.5f);
-        emp2.displayInfo();
         
-        System.out.println();
-
-        System.out.println("Commission Employee:");
         CommissionEmployee emp3 = new CommissionEmployee(75000);
-        emp3.displayInfo();
-        
-        System.out.println();
-        
-        System.out.println("Base Plus Commission Employee:");
+
         BasePlusCommissionEmployee emp4 = new BasePlusCommissionEmployee(75000, 5000);
-        emp4.displayInfo();
-     }
+        
+        //Adding the Employees to the list
+        roster.addEmployee(emp1);
+        roster.addEmployee(emp2);
+        roster.addEmployee(emp3);
+        roster.addEmployee(emp4);
+        
+        System.out.println("");
+        
+        roster.displayAllEmployees();
+    }
 }
