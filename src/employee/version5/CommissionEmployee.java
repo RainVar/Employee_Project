@@ -1,4 +1,4 @@
-package employee.version4;
+package employee.version5;
 
 import java.time.LocalDate;
 
@@ -30,6 +30,7 @@ public class CommissionEmployee extends Employee {
     public void setTotalSales(double totalSales) {
         this.totalSales = totalSales;
     }
+    
     
     public double computeSalary() {
         if (totalSales < 50000) {

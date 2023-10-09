@@ -1,6 +1,4 @@
-package TestMain;
-
-import employee.version6.*;
+package employee.version4;
 import java.time.LocalDate;
 
 public class TestMain {

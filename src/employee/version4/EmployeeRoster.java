@@ -1,35 +1,20 @@
 package employee.version4;
 
-import java.util.Arrays;
-
 public class EmployeeRoster {
-
-    private Employee[] empList;
-    private int size = 100;
-    private int count = 0;
-
-    public EmployeeRoster() {
-        empList = new Employee[size];
+    private Employee empList[];
+    private int max;
+    private int count;
+    
+     public EmployeeRoster() {
+        this.max = 10;
+        this.empList = new Employee[max];
+        this.count = 0;
     }
-
-    public EmployeeRoster(Employee[] empList) {
-        this.empList = Arrays.copyOf(empList, size);
-        count = empList.length;
-    }
-
-    public EmployeeRoster(Employee[] empList, int size) {
-        this.size = size;
-        this.empList = Arrays.copyOf(empList, size);
-        count = empList.length;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-        empList = Arrays.copyOf(empList, size);
+     
+    public EmployeeRoster(int max) {
+        this.empList = new Employee[max];
+        this.max = max;
+        this.count = 0;
     }
 
     public Employee[] getEmpList() {
@@ -37,8 +22,15 @@ public class EmployeeRoster {
     }
 
     public void setEmpList(Employee[] empList) {
-        this.empList = Arrays.copyOf(empList, size);
-        count = empList.length;
+        this.empList = empList;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
     }
 
     public int getCount() {
@@ -48,115 +40,126 @@ public class EmployeeRoster {
     public void setCount(int count) {
         this.count = count;
     }
-
-    public void displayAllEmployees() {
-        for (Employee emp : empList) {
-            if (emp != null) {
-                System.out.println(emp.toString());
-                System.out.println("");
-            }
-        }
-        System.out.println("");
-    }
-
-    public boolean addEmployee(Employee e) {
-        if (count < size) {
-            empList[count] = e;
+    
+    public boolean addEmployee(Employee emp) {
+        if (count < max) {
+            empList[count] = emp;
             count++;
-            System.out.println("EMPLOYEE " + e.getEmpName().getLastName() + " WITH ID #" + e.getEmpID() + " added");
+            System.out.println("Succesfully Added");
             return true;
-        } else {
-            System.out.println("Roster is full.");
+        }
+        else {
+            System.out.println("Roster is Full");
             return false;
         }
     }
-
-    public Employee removeEmployee(int id) {
-        for (int i = 0; i < count; i++) {
-            if (empList[i] != null && id == empList[i].getEmpID()) {
-                Employee removed = empList[i];
-
-                for (int j = i; j < count - 1; j++) {
-                    empList[j] = empList[j + 1];
-                }
-
+    
+    public boolean removeEmployee(int empID) {
+        for (int x = 0; x < count; x++) {
+            if (empList[x] != null && empList[x].getEmpID() == empID) {
+                System.out.println("Succesfully Removed");
+                empList[x] = null;
+                empList[x] = empList[count - 1];
                 empList[count - 1] = null;
                 count--;
-                return removed;
+                return true;
             }
-        }
-        System.out.println("Employee with ID #" + id + " is not found!");
-        return null;
+        } 
+        System.out.println("ID not found");
+        return false;
     }
-
-    public EmployeeRoster searchEmployee(String keyword) {
-        EmployeeRoster match = new EmployeeRoster();
-        for (Employee employee : empList) {
-            if (employee != null) {
-                String empInfo = employee.getEmpName().toString().toLowerCase();
-                String search = keyword.toLowerCase();
-
-                if (empInfo.contains(search) || String.valueOf(employee.getEmpID()).contains(search)) {
-                    match.addEmployee(employee);
-                }
-            }
-        }
-        return match;
-    }
-
-    public int countEmployeeByType(Class<? extends Employee> employeeType) {
-        int cnt = 0;
-        for (Employee employee : empList) {
-            if (employeeType.isInstance(employee)) {
-                cnt++;
-            }
-        }
-        return cnt;
-    }
-
-    public void displayEmployeeByType(Class<? extends Employee> employeeType) {
-        String displayMessage = switch (employeeType.getSimpleName()) {
-            case "HourlyEmployee" -> "Displaying Hourly Employees:";
-            case "PieceWorkerEmployee" -> "Displaying Piece Worker Employees:";
-            case "CommissionEmployee" -> "Displaying Commission Employees:";
-            case "BasePlusCommissionEmployee" -> "Displaying Base Plus Commission Employees:";
-            default -> "Unknown type";
-        };
-
-        System.out.println(displayMessage);
-
-        for (Employee employee : empList) {
-            if (employee != null && employeeType.isInstance(employee)) {
-                System.out.println(employee.toString());
-                System.out.println();
-            }
-        }
-    }
-
-    public boolean updateEmpInfo(int id, String prefix, String firstName, String middleName, String lastName, String suffix) {
-        for (Employee employee : empList) {
-            if (employee != null && id == employee.getEmpID()) {
-                Name empName = employee.getEmpName();
-                if (prefix != null) {
-                    empName.setTitle(prefix);
-                }
-                if (firstName != null) {
-                    empName.setFirstName(firstName);
-                }
-                if (middleName != null) {
-                    empName.setMiddleName(middleName);
-                }
-                if (lastName != null) {
-                    empName.setLastName(lastName);
-                }
-                if (suffix != null) {
-                    empName.setSuffix(suffix);
-                }
-                System.out.println("Name updated for Employee #" + id);
+    
+    public boolean updateEmployee(int empID, Employee updatedEmployee) {
+        for (int i = 0; i < count; i++) {
+            if (empList[i] != null && empList[i].getEmpID() == empID) {
+                empList[i] = updatedEmployee;
                 return true;
             }
         }
-        System.out.println("Employee #" + id + " does not exist!");
         return false;
+    }
+    
+    public EmployeeRoster searchEmployee(String keyword) {
+        EmployeeRoster matchingEmployee = new EmployeeRoster();
+        String search = keyword.toLowerCase();
+        for (Employee employee : empList) {
+            if (employee != null) {
+                String empName = employee.getEmpName().toString().toLowerCase();
+                String empIdString = String.valueOf(employee.getEmpID());
+
+                if (empName.contains(search) || empIdString.contains(search)) {
+                    matchingEmployee.addEmployee(employee);
+                }
+            }
+        }
+        return matchingEmployee;
+    }
+    
+    public int countHourlyEmployee() {
+        int HourlyEmployeeCount = 0;
+        for(Employee emp : empList) {
+            if(emp instanceof HourlyEmployee) {
+                HourlyEmployeeCount++;
+            }
+        }
+        return HourlyEmployeeCount;
+    }
+
+    public int countPieceWorkerEmployee() {
+        int PieceWorkerEmployeeCount = 0;
+        for(Employee emp : empList) {
+            if(emp instanceof PieceWorkerEmployee){
+                PieceWorkerEmployeeCount++;
+            }
+        }
+        return PieceWorkerEmployeeCount;
+    }
+
+    public int countCommissionEmployee() {
+        int CommissionEmployeeCount = 0;
+        for(Employee emp : empList) {
+            if(emp instanceof CommissionEmployee && !(emp instanceof BasePlusCommissionEmployee)) {
+                CommissionEmployeeCount++;
+            }
+        }
+        return CommissionEmployeeCount;
+    }
+
+    public int countBasePlusCommissionEmployee() {
+        int BasePlusCommissionCount = 0;
+        for (Employee emp : empList) {
+            if (emp instanceof BasePlusCommissionEmployee) {
+                BasePlusCommissionCount++;
+            }
+        }
+        return BasePlusCommissionCount;
+    }
+    
+     public void displayAllEmployees() {
+        ///System.out.println("\n\n\n");
+        System.out.printf("%-4s|\t%-40s|\t%-25s|\t%-15s\n", "ID", "Name", "Type", "Salary");
+        System.out.println("--------------------------------------------------------------------------------------------------------");
+        for (Employee emp : empList) {
+            if (emp != null) {
+                String type = "";
+                double salary = 0;
+                if (emp instanceof HourlyEmployee) {
+                    type = "Hourly";
+                    salary = ((HourlyEmployee) emp).computeSalary();
+                } else if (emp instanceof PieceWorkerEmployee) {
+                    type = "Piece Worker";
+                    salary = ((PieceWorkerEmployee) emp).computeSalary();
+                } else if (emp instanceof BasePlusCommissionEmployee) {
+                    type = "Base Plus Commission";
+                    salary = ((BasePlusCommissionEmployee)emp).computeSalary();
+                } else if (emp instanceof CommissionEmployee) {
+                    type = "Commission";
+                    salary = ((CommissionEmployee) emp).computeSalary();
+                }
+
+                System.out.printf("%-4d|\t%-40s|\t%-25s|\tPhp %-10.2f\n", emp.getEmpID(), emp.getEmpName(), type, salary);
+            }
+        }
+        System.out.println("--------------------------------------------------------------------------------------------------------");
     }
 }
